@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>Images/wind_icon.png</file>
+  </qresource>
+  <qresource prefix="close">
+    <file>Images/close-icon.png</file>
+  </qresource>
+  <qresource prefix="user">
+    <file>Images/user-icon.png</file>
+  </qresource>
+</RCC>
