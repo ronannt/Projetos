@@ -42,7 +42,7 @@ class Funcs:
 
     def UpdateTable(self, wind):
         self.cursor = self.db_connection.cursor()
-        q = ("SELECT codigo, responsavel, documentos, obs FROM test.base_doc WHERE 1;")
+        q = ("SELECT codigo, responsavel, status, obs FROM test.customers WHERE 1;")
         self.cursor.execute(q)
         result = self.cursor.fetchall()
         table = wind.table
@@ -53,3 +53,31 @@ class Funcs:
                 table.setItem(i, j, QtWidgets.QTableWidgetItem(str(result[i][j])))
         wind.show()
         self.cursor.close()
+
+    '''def NewData(self, setor, status1, status2, status3, obs, wind, add):
+        setorf = setor.currentItem().text()
+
+        if status1.isChecked():
+            statusf = "Documentação"
+        if status2.isChecked():
+            statusf = "Análise"
+        if status3.isChecked():
+            statusf = "Vistoria"
+
+        if obs == "":
+            obs = "Nulo"
+        obsf = ""
+        for i in obs:
+            if i.isalnum() or i == " ":
+                    obsf += i
+        obsf.lower()
+
+        self.cursor = self.db_connection.cursor()
+        self.cursor.execute(
+            f"INSERT INTO test.base_projetos (setor, status, responsavel, obs) VALUES ('{setorf}', '{user}', '{statusf}', '{obsf}');")
+        self.db_connection.commit()
+        self.cursor.close()
+
+        Funcs.UpdateTable(Funcs, wind)
+        Funcs.ClearAdd(Funcs, setor, add, status1, status2, status3)
+        add.close()'''

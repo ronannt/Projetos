@@ -14,8 +14,9 @@ app = QtWidgets.QApplication([])
 '''Ícone usado nas janelas: href="https://www.flaticon.com/free-icons/digital-product" title="digital-product icons"Digital-product icons created by Freepik - Flaticon'''
 
 #Carregamento de telas
-login = uic.loadUi("Projetos\Frames\login.ui")
-home = uic.loadUi("Projetos\Frames\home.ui")
+login = uic.loadUi("RegistrationSystem\Frames\login.ui")
+home = uic.loadUi("RegistrationSystem\Frames\home.ui")
+add = uic.loadUi("RegistrationSystem\Frames\add.ui")
 
 
 #Login
@@ -27,7 +28,11 @@ login.bt_enter_login.clicked.connect(lambda: Funcs.Login(Funcs, login.line_user.
 home.frame_erro.hide()
 home.bt_cl_popup.clicked.connect(lambda: Funcs.ClosePopUp(home))
 home.bt_add.clicked.connect(lambda: Funcs.ShowWindow(Funcs, add))
-home.bt_info.clicked.connect(lambda: Funcs.Select(Funcs, home.table, info, home))
+#home.bt_info.clicked.connect(lambda: Funcs.Select(Funcs, home.table, info, home))
+
+#Add
+add.frame_erro.hide()
+add.bt_cl_popup.clicked.connect(lambda: Funcs.ClosePopUp(add))
 
 login.show()
 app.exec_()
