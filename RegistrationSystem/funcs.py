@@ -54,7 +54,7 @@ class Funcs:
         wind.show()
         self.cursor.close()
 
-    '''def NewData(self, setor, status1, status2, status3, obs, wind, add):
+    '''def NewData(self, nome, rg, cpf,nascimento):
         setorf = setor.currentItem().text()
 
         if status1.isChecked():
