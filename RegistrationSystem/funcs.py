@@ -54,30 +54,40 @@ class Funcs:
         wind.show()
         self.cursor.close()
 
-    '''def NewData(self, nome, rg, cpf,nascimento):
-        setorf = setor.currentItem().text()
+    def NewData(self, nome, rg, cpf, nascimento, endereco, cidade, estado, celular, email, obs, add):
+        data = str(nascimento.toPyDate())
+        vartext = [nome, endereco, cidade, estado, email, obs]
+        varnumber = [rg, cpf, celular]
+        vartextf = []
+        varnumberf = []
 
-        if status1.isChecked():
-            statusf = "Documentação"
-        if status2.isChecked():
-            statusf = "Análise"
-        if status3.isChecked():
-            statusf = "Vistoria"
+        for var in vartext:
+            if var == "":
+                add.label_erro.setText("Dados inválidos, verifique!")
+                add.frame_erro.show()
+            varf = ""
+            for i in var:
+                if i.isalnum():
+                    varf += i
+            varf.lower()
+            vartextf.append(varf)
 
-        if obs == "":
-            obs = "Nulo"
-        obsf = ""
-        for i in obs:
-            if i.isalnum() or i == " ":
-                    obsf += i
-        obsf.lower()
+        for var in varnumber:
+            if var == "":
+                add.label_erro.setText("Dados inválidos, verifique!")
+                add.frame_erro.show()
+            varf = ""
+            for i in var:
+                if i.isnumeric():
+                    varf += i
+            varf.lower()
+            varnumberf.append(varf)
 
         self.cursor = self.db_connection.cursor()
-        self.cursor.execute(
-            f"INSERT INTO test.base_projetos (setor, status, responsavel, obs) VALUES ('{setorf}', '{user}', '{statusf}', '{obsf}');")
+        q = (f"INSERT INTO test.customers (responsavel, status, obs, nome, rg, cpf, nascimento, endereco, cidade, estado, celular, email) VALUES ('{user}', 'Documentação', '{vartextf[5]}', '{vartextf[0]}', '{varnumberf[0]}', '{varnumberf[1]}', '{data}', '{vartextf[1]}', '{vartextf[2]}', '{vartextf[3]}', '{varnumberf[2]}', '{vartextf[4]}');")
+        self.cursor.execute(q)
         self.db_connection.commit()
         self.cursor.close()
 
-        Funcs.UpdateTable(Funcs, wind)
-        Funcs.ClearAdd(Funcs, setor, add, status1, status2, status3)
-        add.close()'''
+        #Funcs.ClearAdd(Funcs, setor, add, status1, status2, status3)
+        add.close()

@@ -14,10 +14,9 @@ app = QtWidgets.QApplication([])
 '''Ícone usado nas janelas: href="https://www.flaticon.com/free-icons/digital-product" title="digital-product icons"Digital-product icons created by Freepik - Flaticon'''
 
 #Carregamento de telas
-login = uic.loadUi("RegistrationSystem\Frames\login.ui")
-home = uic.loadUi("RegistrationSystem\Frames\home.ui")
-add = uic.loadUi("RegistrationSystem\Frames\add.ui")
-
+login = uic.loadUi("RegistrationSystem/Frames/login.ui")
+home = uic.loadUi("RegistrationSystem/Frames/home.ui")
+add = uic.loadUi("RegistrationSystem/Frames/add.ui")
 
 #Login
 login.frame_erro.hide()
@@ -33,6 +32,9 @@ home.bt_add.clicked.connect(lambda: Funcs.ShowWindow(Funcs, add))
 #Add
 add.frame_erro.hide()
 add.bt_cl_popup.clicked.connect(lambda: Funcs.ClosePopUp(add))
+add.calendar.setGridVisible(True)
+add.calendar.setVerticalHeaderFormat(add.calendar.NoVerticalHeader)
+add.okbt.clicked.connect(lambda: Funcs.NewData(Funcs, add.nome.text(), add.rg.text(), add.cpf.text(), add.calendar.selectedDate(), add.endereco.text(), add.cidade.text(), add.estado.text(), add.celular.text(), add.email.text(), add.obs.text(), add))
 
 login.show()
 app.exec_()
